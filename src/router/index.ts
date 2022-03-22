@@ -1,18 +1,23 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import dashboard from "@/views/crm/dashboard/index.vue";
+import { baseRouter } from "./modules/base";
+import { MenuItem } from "../interface";
 
-const constantRouterMap = [
-  { path: "/", redirect: "/dashboard" },
+const constantRouterMap: Array<MenuItem> = [
   {
-    path: "/dashboard",
-    name: "dashboard",
-    component: dashboard,
+    path: "/",
+    meta: {
+      title: "root",
+      icon: "",
+    },
+    component: () => import("@/layout/index.vue"),
+    children: baseRouter,
+    redirect: "/dashboard",
   },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: constantRouterMap,
+  routes: constantRouterMap as any,
 });
 
 export default router;

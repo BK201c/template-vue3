@@ -1,40 +1,36 @@
 <template>
   <a-menu
-    v-model:openKeys="openKeys"
     v-model:selectedKeys="selectedKeys"
-    :style="{ height: '100%', borderRight: 0 }"
+    theme="dark"
     mode="inline"
     @click="handleClick"
   >
-    <a-sub-menu
-      :key="menu.key"
-      v-for="menu in menuList"
+    <a-menu-item
+      :key="menu.path"
+      v-for="menu of baseRouter"
       @titleClick="titleClick"
     >
       <template #icon>
-        <MailOutlined />
+        <AntIcon :icon="menu.meta.icon" />
       </template>
-      <template #title>{{ menu.title }}</template>
-      <a-menu-item :key="menuItem.key" v-for="menuItem in menu.children">{{
-        menuItem.title
-      }}</a-menu-item>
-    </a-sub-menu>
+      {{ menu.meta.title }}
+    </a-menu-item>
   </a-menu>
 </template>
 
 <script lang="ts" setup>
-import { MailOutlined } from "@ant-design/icons-vue";
-import { reactive, toRefs } from "vue";
-import { menuList } from "@/config/menu";
+import { ref } from "vue";
+import { baseRouter } from "@/router/modules/base";
+import router from "@/router";
+import AntIcon from "@/components/icon";
+import { useRoute } from "vue-router";
+const route = useRoute();
+const selectedKeys = ref([route.path]);
 
-const state = reactive({
-  selectedKeys: ["1"],
-  openKeys: ["sub1"],
-});
-const { selectedKeys, openKeys } = toRefs(state);
-
-const handleClick = (e: Event): void => {
-  console.log("click", e);
+const handleClick = (e: any): void => {
+  const path = e.keyPath.join("/");
+  router.push({ path: path });
+  console.log(e);
 };
 
 const titleClick = (e: Event): void => {

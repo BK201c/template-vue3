@@ -12,3 +12,9 @@ $sidebarHeight: calc(#{$layoutHeight}- #{$navHeight});
 
 //内容容器
 $contentWidth: calc(#{$layoutHeight} - #{$sidebarWidth}); //侧边栏对应内容宽度
+
+$mainWidth: 100vw; //渲染容器内总宽度
+$sidebarWidth: 185px; //侧边栏宽度
+$contentWidth: calc(100vw - #{$sidebarWidth}); //侧边栏对应内容宽度
+$formWidth: 600px; //内容内-表单宽度
+$preWidth: calc(#{$contentWidth} - #{$formWidth} - 10px);
