@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import { baseRouter } from "./modules/base";
-import { MenuItem } from "../interface";
+import { MenuItem } from "@/interface";
 
 const constantRouterMap: Array<MenuItem> = [
   {

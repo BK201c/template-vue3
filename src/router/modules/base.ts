@@ -1,4 +1,4 @@
-import { MenuItem } from "../../interface";
+import { MenuItem } from "@/interface";
 
 //侧边栏导航
 export const baseRouter: Array<MenuItem> = [
