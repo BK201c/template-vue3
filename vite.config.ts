@@ -1,8 +1,16 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import * as fs from "fs";
-import path from "path";
-const dotenv = require("dotenv");
+import { resolve } from "path";
+import dotenv from "dotenv";
+
+const alias = {
+  "@": resolve(__dirname, "./src"),
+  "@root": resolve(__dirname, "../src"),
+  "@assets": resolve(__dirname, "./src/assets"),
+  "@cmp": resolve(__dirname, "./src/components"),
+  "@config": resolve(__dirname, "./src/config"),
+};
 
 // https://vitejs.dev/config/
 export default ({ command, mode }) => {
@@ -42,13 +50,7 @@ export default ({ command, mode }) => {
     plugins: [vue()],
 
     //别名
-    resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "src"),
-        "@assets": path.resolve(__dirname, "src/assets"),
-        "@config": path.resolve(__dirname, "src/config"),
-      },
-    },
+    resolve: { alias },
 
     // 强制预构建插件包
     optimizeDeps: {
