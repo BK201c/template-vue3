@@ -22,7 +22,7 @@
 import { ref } from "vue";
 import { baseRouter } from "@/router/modules/base";
 import router from "@/router";
-import AntIcon from "@/components/icon";
+import AntIcon from "@cmp/icon";
 import { useRoute } from "vue-router";
 const route = useRoute();
 const selectedKeys = ref([route.path]);
