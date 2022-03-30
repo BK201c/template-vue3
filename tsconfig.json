@@ -9,6 +9,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "types": [
       "vite/client"
     ],
@@ -26,6 +27,9 @@
       ],
       "@assets/*": [
         "src/assets/*"
+      ],
+      "@root/*": [
+        "./*"
       ]
     }
   },

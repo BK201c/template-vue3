@@ -20,7 +20,7 @@
 <script lang="ts" setup>
 import Sidebar from "./components/sidebar/index.vue";
 import Logo from "./components/logo/index.vue";
-import { ref } from "@vue/reactivity";
+import { ref } from "vue";
 
 const isCollapsed = ref<boolean>(true);
 const change = (value: boolean) => {

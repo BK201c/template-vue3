@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import logo from "@assets/img/logo.png";
 import AntIcon from "@cmp/icon";
-import { ref } from "@vue/reactivity";
+import { ref } from "vue";
 const title = import.meta.env.VITE_APP_NAME;
 const isCollapsed = ref<Boolean>(true);
 

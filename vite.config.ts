@@ -41,7 +41,7 @@ export default ({ command, mode }) => {
     // 本地服务配置
     server: {
       host: process.env.VITE_HOST,
-      port: process.env.VITE_PORT,
+      port: 3000,
     },
 
     envDir: "./src/env",
