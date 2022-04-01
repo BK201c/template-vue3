@@ -3,14 +3,24 @@ import vue from "@vitejs/plugin-vue";
 import * as fs from "fs";
 import { resolve } from "path";
 import dotenv from "dotenv";
+import Components from "unplugin-vue-components/vite";
+import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
 
 const alias = {
   "@": resolve(__dirname, "./src"),
-  "@root": resolve(__dirname, "../src"),
+  "@root": resolve(__dirname, "."),
   "@assets": resolve(__dirname, "./src/assets"),
   "@cmp": resolve(__dirname, "./src/components"),
   "@config": resolve(__dirname, "./src/config"),
 };
+
+const plugins = [
+  vue(),
+  Components({
+    /* options */
+    resolvers: [AntDesignVueResolver()],
+  }),
+];
 
 // https://vitejs.dev/config/
 export default ({ command, mode }) => {
@@ -47,7 +57,7 @@ export default ({ command, mode }) => {
     envDir: "./src/env",
 
     // 插件
-    plugins: [vue()],
+    plugins: plugins,
 
     //别名
     resolve: { alias },
@@ -63,6 +73,13 @@ export default ({ command, mode }) => {
       outDir: "dist", //指定输出路径
       assetsDir: "assets", // 指定生成静态资源的存放路径
       minify: "terser", // 混淆器，terser构建后文件体积更小
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            lodash: ["lodash"],
+          },
+        },
+      },
     },
   });
 };
