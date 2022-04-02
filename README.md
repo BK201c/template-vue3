@@ -12,10 +12,10 @@ This template should help get you started developing with Vue 3 and Typescript i
 
 ```bash
 #open project
-cd "$dir"
+cd ./template-vue3
 
 #install dependencies
-yarn
+yarn install
 
 #start
 yarn dev
