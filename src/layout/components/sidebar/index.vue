@@ -7,11 +7,12 @@
   >
     <a-menu-item
       :key="menu.path"
+      style="width: 90%; margin: auto; border-radius: 8px"
       v-for="menu of baseRouter"
       @titleClick="titleClick"
     >
       <template #icon>
-        <AntIcon :icon="menu.meta.icon" />
+        <AntIcon style="margin-left: -4px" :icon="menu.meta.icon" />
       </template>
       {{ menu.meta.title }}
     </a-menu-item>

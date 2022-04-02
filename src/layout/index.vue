@@ -41,6 +41,7 @@ const change = (value: boolean) => {
   }
   &-sidebar {
     position: relative;
+    padding: 10px 0;
     &-top {
       font-size: 20px;
     }
