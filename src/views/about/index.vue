@@ -21,7 +21,7 @@ const items = [
     des: `版本：v${config.version}`,
   },
   {
-    des: `发布日期：2021-09-27`,
+    des: `发布日期：2020-09-27`,
   },
   {
     des: "Copyright 2020-2022",

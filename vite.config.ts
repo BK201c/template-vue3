@@ -5,6 +5,7 @@ import { resolve } from "path";
 import dotenv from "dotenv";
 import Components from "unplugin-vue-components/vite";
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
+import vueJsx from "@vitejs/plugin-vue-jsx";
 
 const alias = {
   "@": resolve(__dirname, "./src"),
@@ -16,6 +17,7 @@ const alias = {
 
 const plugins = [
   vue(),
+  vueJsx(),
   Components({
     /* options */
     resolvers: [AntDesignVueResolver()],
@@ -51,7 +53,7 @@ export default ({ command, mode }) => {
     // 本地服务配置
     server: {
       host: process.env.VITE_HOST,
-      port: 3000,
+      port: 3200,
     },
 
     envDir: "./src/env",

@@ -20,12 +20,12 @@ import logo from "@assets/img/logo.png";
 import AntIcon from "@cmp/icon";
 import { ref } from "vue";
 const title = import.meta.env.VITE_APP_NAME;
-const isCollapsed = ref<Boolean>(true);
+const isCollapsed = ref<Boolean>(false);
 
-const emit = defineEmits(["change"]);
+const $emit = defineEmits(["change"]);
 const change = (): void => {
   isCollapsed.value = !isCollapsed.value;
-  emit("change", isCollapsed.value);
+  $emit("change", isCollapsed.value);
 };
 </script>
 

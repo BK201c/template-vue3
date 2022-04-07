@@ -18,11 +18,11 @@
 </template>
 
 <script lang="ts" setup>
-import Sidebar from "./components/sidebar/index.vue";
+import Sidebar from "./components/sidebar/index";
 import Logo from "./components/logo/index.vue";
 import { ref } from "vue";
 
-const isCollapsed = ref<boolean>(true);
+const isCollapsed = ref<boolean>(false);
 const change = (value: boolean) => {
   isCollapsed.value = value;
 };

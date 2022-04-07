@@ -5,7 +5,7 @@ export const baseRouter: Array<MenuItem> = [
   {
     meta: {
       title: "首页",
-      icon: "HomeOutlined",
+      icon: "home-outlined",
     },
     path: "/dashboard",
     name: "dashboard",
@@ -13,8 +13,26 @@ export const baseRouter: Array<MenuItem> = [
   },
   {
     meta: {
-      title: "关于",
+      title: "设置",
       icon: "SettingOutlined",
+    },
+    redirect: "/setting/detail",
+    path: "/setting",
+    children: [
+      {
+        meta: {
+          title: "系统设置",
+        },
+        path: "detail",
+        name: "settingDetail",
+        component: () => import("@/views/setting/index.vue"),
+      },
+    ],
+  },
+  {
+    meta: {
+      title: "关于",
+      icon: "QuestionCircleOutlined",
     },
     path: "/about",
     name: "about",
