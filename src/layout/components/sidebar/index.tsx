@@ -3,13 +3,12 @@ import { baseRouter } from "@/router/modules/base";
 import router from "@/router";
 import AntIcon from "@cmp/icon";
 import { useRoute } from "vue-router";
-import { isEmpty } from "lodash";
 import { MenuItem } from "@/interface";
 
 const handleClick = (e: any): void => {
-  const path = e.keyPath.join("/");
-  router.push({ path: path });
   console.log(e);
+  const path = e.key;
+  router.push({ path: path });
 };
 
 const radiusDivStyle = {
@@ -33,6 +32,7 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const selectedKeys = ref([route.path]);
+    console.log(selectedKeys);
     return () => (
       <a-menu
         theme="dark"
@@ -41,10 +41,10 @@ export default defineComponent({
         mode="inline"
       >
         {baseRouter.map((menu) => {
-          if (menu.hasOwnProperty("children") && !isEmpty(menu.children)) {
+          if (menu.meta.level === 1)
             return (
               <a-sub-menu
-                style={{ ...radiusDivStyle }}
+                style={{ ...radiusDivStyle, borderRadius: "8px" }}
                 key={menu.path}
                 title={menu.meta.title}
                 icon={AntIcon({
@@ -52,12 +52,16 @@ export default defineComponent({
                   style: { marginLeft: "-4px" },
                 })}
               >
-                {menu.children?.map((item) => menuItem(item))}
+                {menu.meta.itemGroup?.map((v) =>
+                  menuItem(
+                    baseRouter.filter(
+                      (r) => r.path === v && r.meta.level === 2
+                    )[0]
+                  )
+                )}
               </a-sub-menu>
             );
-          } else {
-            return menuItem(menu);
-          }
+          if (menu.meta.level !== 2) return menuItem(menu);
         })}
       </a-menu>
     );

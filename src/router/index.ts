@@ -10,8 +10,8 @@ const constantRouterMap: Array<MenuItem> = [
       icon: "",
     },
     component: () => import("@/layout/index.vue"),
-    children: baseRouter,
     redirect: "/dashboard",
+    children: baseRouter,
   },
 ];
 

@@ -15,19 +15,20 @@ export const baseRouter: Array<MenuItem> = [
     meta: {
       title: "设置",
       icon: "SettingOutlined",
+      level: 1,
+      itemGroup: ["/setSys"],
     },
-    redirect: "/setting/detail",
     path: "/setting",
-    children: [
-      {
-        meta: {
-          title: "系统设置",
-        },
-        path: "detail",
-        name: "settingDetail",
-        component: () => import("@/views/setting/index.vue"),
-      },
-    ],
+    name: "setting",
+  },
+  {
+    meta: {
+      title: "系统设置",
+      level: 2,
+    },
+    path: "/setSys",
+    name: "setSys",
+    component: () => import("@/views/setting/index.vue"),
   },
   {
     meta: {
