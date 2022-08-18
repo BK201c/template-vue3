@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta charset="utf-8" />
+    <title>canvas中的拖拽，缩放，旋转</title>
+    <style type="text/css">
+      .canvas-container {
+        border: 1px solid #aaa;
+        width: 302px;
+        margin: 0 auto;
+      }
+
+      .box-container {
+        margin-top: 20px;
+      }
+
+      .red-box {
+        background-color: #f00;
+        width: 60px;
+        height: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="canvas-container">
+      <canvas width="300" height="300"></canvas>
+    </div>
+    <div class="box-container">
+      <div class="red-box"></div>
+    </div>
+  </body>
+
+  <script type="module">
+    import Stage from "./js/stage.js";
+    import Sprite from "./js/sprite.js";
+
+    window.onload = function () {
+      const stage = new Stage({
+        canvas: document.querySelector("canvas"),
+      });
+
+      document.querySelector(".red-box").addEventListener("click", function () {
+        const randomX = Math.floor(Math.random() * 200);
+        const randomY = Math.floor(Math.random() * 200);
+        const sprite = new Sprite({
+          pos: [randomX, randomY],
+          size: [120, 60],
+          minSize: [40, 20],
+          maxSize: [240, 120],
+        });
+        stage.append(sprite);
+      });
+    };
+  </script>
+</html>

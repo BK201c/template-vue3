@@ -1,0 +1,1 @@
+{"version":"0.0.1","name":"template-vue3","dependencies":{"@types/lodash":{"version":"4.14.181"},"animate.css":{"version":"4.1.1"},"ant-design-vue":{"version":"3.1.1"},"axios":{"version":"0.26.1"},"dotenv":{"version":"16.0.0"},"vue-router":{"version":"4.0.14"},"vue":{"version":"3.2.31"},"vuex":{"version":"4.0.2"}}}
